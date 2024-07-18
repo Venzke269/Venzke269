@@ -1,0 +1,52 @@
+# 001、__abs__方法：
+# 1、定义一个简单的数值类
+class Number:
+    def __init__(self, value):
+        self.value = value
+    def __abs__(self):
+        return abs(self.value)
+# 使用示例
+num = Number(-5)
+print(abs(num))  # 输出: 5，调用了__abs__方法
+ 
+# 2、定义一个复数类
+import math
+class ComplexNumber:
+    def __init__(self, real, imag):
+        self.real = real
+        self.imag = imag
+    def __abs__(self):
+        return math.sqrt(self.real ** 2 + self.imag ** 2)
+# 使用示例
+cnum = ComplexNumber(3, 4)
+print(abs(cnum))  # 输出: 5.0（因为 3^2 + 4^2 = 25, sqrt(25) = 5）
+ 
+# 3、定义一个有理数类
+class RationalNumber:
+    def __init__(self, numerator, denominator):
+        self.numerator = numerator
+        self.denominator = denominator
+        self.reduce()  # 假设我们有一个reduce方法来简化分数
+    def reduce(self):
+        # 这里只是一个简单的示例，真实情况可能需要更复杂的逻辑来简化分数
+        gcd = math.gcd(abs(self.numerator), abs(self.denominator))
+        self.numerator //= gcd
+        self.denominator //= gcd
+    def __abs__(self):
+        return RationalNumber(abs(self.numerator), self.denominator)
+    def __str__(self):
+        return f"{self.numerator}/{self.denominator}"
+# 使用示例
+rat = RationalNumber(-4, 2)
+print(abs(rat))  # 输出: 2/1 或 2（取决于你如何定义 __str__ 方法）
+ 
+# 4、定义一个向量类
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def __abs__(self):
+        return (self.x ** 2 + self.y ** 2) ** 0.5
+# 使用示例
+v = Vector(3, 4)
+print(abs(v))  # 输出: 5.0（向量的模长或绝对值）
