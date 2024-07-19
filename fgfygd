@@ -1,0 +1,19 @@
+from selenium import webdriver
+import time
+ 
+# 设置 Chrome 驱动程序路径
+driver_path = '/path/to/chromedriver'
+ 
+# 目标网页 URL
+url = 'http://quote.eastmoney.com/center/gridlist.html#hs_a_board'
+# 设置 Chrome 浏览器选项
+options = webdriver.ChromeOptions()
+options.add_argument('--headless')  # 无头模式运行浏览器，即不打开实际浏览器窗口
+options.add_argument('--disable-gpu')
+options.add_argument('--no-sandbox')
+ 
+# 启动 Chrome 浏览器
+driver = webdriver.Chrome(executable_path=driver_path, options=options)
+ 
+# 打开目标网页
+driver.get(url)
