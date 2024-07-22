@@ -1,0 +1,22 @@
+uni.request({
+  url: '后端接口地址,获取订单id',
+  method: 'POST',
+  data: { 传入接口需要的参数,如商品金额,商品个数等 },
+  success(res) {
+    console.log(res.data.orderId)
+  }
+})
+uni.request({
+  url: '后端接口地址,获取支付核心数据',
+  method: 'POST',
+  data: { 传入接口需要的参数,如订单ID,openId等 },
+  success(res) {
+    console.log(res.data)
+    //接口会返回以下核心参数
+    //timeStamp 时间戳
+    //nonceStr  随机字符串
+    //package   统一下单接口返回的 prepay_id 参数值
+    //signType  签名算法
+    //paySign   签名
+  }
+})
